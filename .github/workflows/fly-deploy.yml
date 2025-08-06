@@ -24,7 +24,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/feature/new-feature' }}
         uses: superfly/flyctl-actions@1.3
         with:
-          args: "deploy --config fly.staging.toml --remote-only"
+          args: "deploy --app deploy-test-damp-water-846-staging --config fly.staging.toml --remote-only"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
