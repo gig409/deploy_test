@@ -22,9 +22,7 @@ export function Welcome() {
         <div className="max-w-[300px] w-full space-y-6 px-4">
           <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
             <p className="leading-6 text-gray-700 dark:text-gray-200 text-center">
-              What&apos;s next? Make a change again and it will be deployed to  <strong>staging</strong>.
-              <br />
-              You can view the staging deployment at: <strong>https://{`${{ secrets.FLY_STAGING_APP_NAME }}`}.fly.dev</strong>
+              What&apos;s next? Make a change
             </p>
             <ul>
               {resources.map(({ href, text, icon }) => (
