@@ -21,10 +21,17 @@ jobs:
       
       - name: Debug GitHub event
         run: |
+          echo "=== GITHUB CONTEXT DEBUG ==="
           echo "Event name: ${{ github.event_name }}"
           echo "Event action: ${{ github.event.action }}"
           echo "Ref: ${{ github.ref }}"
           echo "Head ref: ${{ github.head_ref }}"
+          echo "Base ref: ${{ github.base_ref }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "SHA: ${{ github.sha }}"
+          echo "=== ENVIRONMENT DEBUG ==="
+          env | grep GITHUB_ | sort
       
       - name: Test secret and verify app exists
         run: |

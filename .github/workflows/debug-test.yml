@@ -1,0 +1,21 @@
+name: Debug Test
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, 'feature/*']
+
+jobs:
+  debug:
+    name: Debug Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug everything
+        run: |
+          echo "🎯 TRIGGER TEST SUCCESS!"
+          echo "Event: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Branch: ${{ github.head_ref || github.ref_name }}"
+          echo "This workflow is definitely running!"
