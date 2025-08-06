@@ -19,6 +19,9 @@ RUN npm run build
 
 FROM node:20-alpine
 RUN apk add --no-cache sqlite openssl
+# Make SQLite CLI accessible via fly ssh console
+# $ fly ssh console -C database-cli
+RUN echo "#!/bin/sh\nset -x\nsqlite3 \$DATABASE_URL" > /usr/local/bin/database-cli && chmod +x /usr/local/bin/database-cli
 COPY ./package.json /app/
 COPY --from=production-dependencies-env /app/node_modules /app/node_modules
 COPY --from=build-env /app/build /app/build
