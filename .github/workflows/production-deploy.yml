@@ -4,12 +4,18 @@ on:
   pull_request:
     branches:
       - main
+    types: [closed]
+  push:
+    branches:
+      - main
 
 jobs:
   deploy-production:
     name: Deploy to Production
     runs-on: ubuntu-latest
     concurrency: deploy-production-group
+    # Only run when PR is merged to main
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
