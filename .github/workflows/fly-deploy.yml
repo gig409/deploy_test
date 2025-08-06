@@ -26,7 +26,7 @@ jobs:
         with:
           args: "deploy --app deploy-test-damp-water-846-staging --config fly.staging.toml --remote-only"
         env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          FLY_API_TOKEN: ${{ secrets.FLY_SECRET_STAGING }}
 
       - name: 🚀 Deploy Production
         if: ${{ github.ref == 'refs/heads/main' }}
