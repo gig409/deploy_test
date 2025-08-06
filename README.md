@@ -44,6 +44,40 @@ npm run build
 
 ## Deployment
 
+### Automatic Deployment with GitHub Actions
+
+This project is configured for automatic deployment to Fly.io using GitHub Actions:
+
+- **Staging**: Deploys automatically when you create a pull request
+- **Production**: Deploys automatically when you push to the `main` branch
+
+#### Initial Setup
+
+1. **Run the setup script**:
+   ```bash
+   ./scripts/setup-deployment.sh
+   ```
+
+2. **Configure GitHub Secrets**:
+   - Go to your repository on GitHub
+   - Navigate to Settings > Secrets and variables > Actions
+   - Add the following secrets:
+     - `FLY_API_TOKEN`: Get this by running `flyctl auth token`
+     - `FLY_STAGING_APP_NAME`: Your staging app name (e.g., `your-app-staging`)
+
+#### Workflow
+
+- **For staging**: Create a pull request to trigger a deployment to staging
+- **For production**: Push to `main` branch to trigger a production deployment
+
+### Manual Deployment with Fly.io
+
+Alternatively, you can deploy manually:
+
+```bash
+flyctl deploy
+```
+
 ### Docker Deployment
 
 To build and run using Docker:
